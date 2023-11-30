@@ -7,7 +7,7 @@ from helper import create_video_writer
 conf_threshold = 0.4
 
 # Initialize the YOLOv8 model using the default weights
-model = YOLO("yolov8s.pt")
+model = YOLO("yolov5su.pt")
 
 # Class names for mapping class IDs to labels
 class_names = {
@@ -64,7 +64,7 @@ def detection(que, cap_source=0, out_des="output.mp4"):
         end = datetime.datetime.now()
         # calculate the frame per second and draw it on the frame
         fps = f"FPS: {1 / (end - start).total_seconds():.2f}"
-        cv2.putText(frame, fps, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 8)
+        # cv2.putText(frame, fps, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 8)
         
         # Show the total number of vehicles in the frame
         cv2.putText(frame, f"Total Vehicles: {total_vehicles}", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
