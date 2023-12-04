@@ -6,7 +6,7 @@ model = YOLO("yolov8s.pt")
 
 # Open the video file
 # video_cap = cv2.VideoCapture(0)
-video_cap = cv2.VideoCapture("traffic35_720.mp4")
+video_cap = cv2.VideoCapture("1.mp4")
 
 frame_count = 0
 

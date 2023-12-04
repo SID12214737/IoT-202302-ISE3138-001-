@@ -3,7 +3,7 @@ import time
 from ultralytics import YOLO
 
 # Load the YOLO model
-model = YOLO("yolov8s.pt")
+model = YOLO("yolov5su.pt")
 
 # Open the video file
 video_cap = cv2.VideoCapture("1.mp4")
