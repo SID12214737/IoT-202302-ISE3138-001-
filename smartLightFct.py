@@ -2,6 +2,7 @@ import time
 from multiprocessing import Process, Value
 import RPi.GPIO as GPIO
 
+
 class TrafficLightController:
     def __init__(self):
         # Define GPIO pins for red, yellow, and green LEDs
@@ -63,32 +64,3 @@ class TrafficLightController:
 
     def change_priority_point(self, new_priority):
         self.average_priority_point.value = new_priority
-
-
-def simulate_traffic(controller):
-    # Simulating changes in the number of cars
-    while True:
-        # This is just an example; replace this with your actual car count logic
-        time.sleep(5)
-        cars_count = 15  # Replace this with your car count logic
-        new_color = controller.get_new_color(cars_count)
-        controller.change_light(new_color)
-
-
-if __name__ == '__main__':
-    controller = TrafficLightController()
-
-    # Create a process for simulating traffic
-    traffic_process = Process(target=simulate_traffic, args=(controller,))
-    traffic_process.start()
-
-    # Modify priority remotely (for demonstration purposes)
-    time.sleep(20)  # Let the simulation run for a while before changing priority
-    controller.change_priority_point(6.0)
-
-    # Terminate the simulation after a while (for demonstration purposes)
-    time.sleep(40)
-    traffic_process.terminate()
-
-    # Clean up GPIO before exiting
-    GPIO.cleanup()
