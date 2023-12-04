@@ -1,10 +1,12 @@
+import RPi.GPIO as GPIO
+
+
 # from object_detection_function import detection
 from object_detection_function_everyNth import detection
 # import listener
 from conversation.listener import listener
 # import custom stack
 from container import FixedSizeStack
-
 import time
 # import multiprocessing
 from multiprocessing import Process, Value
