@@ -2,7 +2,8 @@ import cv2
 import queue
 import datetime
 import threading
-from object_detection_function import detection
+# from object_detection_function import detection
+from object_detection_function_everyNth import detection
 from conversation.listener import listener
 from container import FixedSizeStack
 

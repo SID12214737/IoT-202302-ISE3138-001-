@@ -4,10 +4,10 @@ import cv2
 from ultralytics import YOLO
 from helper import create_video_writer
 
-conf_threshold = 0.4
+conf_threshold = 0.2
 
 # Initialize the YOLOv8 model using the default weights
-model = YOLO("yolov5su.pt")
+model = YOLO("yolov3-tinyu.pt")
 
 # Class names for mapping class IDs to labels
 class_names = {
