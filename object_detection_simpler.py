@@ -7,7 +7,7 @@ from deep_sort.deep_sort.detection import Detection
 from deep_sort.tools import generate_detections as gdet
 
 # Load the YOLO model
-model = YOLO("yolov8s.pt")
+model = YOLO("yolov5su.pt")
 
 # Initialize the deep sort tracker
 model_filename = "config/mars-small128.pb"

@@ -28,7 +28,7 @@ start_line_C = (895, 480)
 end_line_C = (1165, 480)
 
 # Initialize the video capture and the video writer objects
-video_cap = cv2.VideoCapture("traffic35_720.mp4")
+video_cap = cv2.VideoCapture("1.mp4")
 writer = create_video_writer(video_cap, "output.mp4")
 
 # Initialize the YOLOv8 model using the default weights
