@@ -15,9 +15,9 @@ def get_new_color(nb_car):
     """
     if nb_car and avarage_priority_point:
         if nb_car/avarage_priority_point >= 1.75:
-            return 1
-        if nb_car/avarage_priority_point <= 0.25:
             return 2
+        if nb_car/avarage_priority_point <= 0.25:
+            return 1
     return 0
 
 def send_light_color_instruction(priority, current_light=current_light):
