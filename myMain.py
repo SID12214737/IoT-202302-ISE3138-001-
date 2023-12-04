@@ -32,7 +32,7 @@ if __name__ == "__main__":
     vid_source = "1.mp4"
 
     # Create a multiprocessing queue
-    data_queue = FixedSizeStack(maxsize=5)
+    data_queue = FixedSizeStack(max_size=5)
 
     # Start object detection process
     obj_detect_process = Process(target=detection, args=(data_queue, vid_source))
