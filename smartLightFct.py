@@ -29,7 +29,7 @@ def send_light_color_instruction(priority, current_light):
     :param current_light: the current light (0 for green, 1 for yellow, 2 for red)
     """
     if priority == 0:
-        return current_light
+        None
     if priority == 1 and current_light == 0:
         time.sleep(6)
         current_light = 1
