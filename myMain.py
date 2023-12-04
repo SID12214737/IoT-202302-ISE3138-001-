@@ -1,6 +1,3 @@
-import cv2
-import queue
-
 # from object_detection_function import detection
 from object_detection_function_everyNth import detection
 # import listener
@@ -11,8 +8,7 @@ from container import FixedSizeStack
 import time
 # import multiprocessing
 from multiprocessing import Process, Value
-# RPi for pin control
-import RPi.GPIO as GPIO
+
 # import traffic light class
 from smartLightFct import TrafficLightController
 
