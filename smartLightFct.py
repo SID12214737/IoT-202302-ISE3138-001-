@@ -8,7 +8,7 @@ class TrafficLightController:
         # Define GPIO pins for red, yellow, and green LEDs
         self.RED_PIN = 17
         self.YELLOW_PIN = 18
-        self.GREEN_PIN = 19
+        self.GREEN_PIN = 27
 
         # Set up GPIO mode and pins
         GPIO.setmode(GPIO.BCM)
