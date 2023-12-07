@@ -1,0 +1,32 @@
++-----------------------+
+|      Initialization   |
+|  GPIO Pins for Lights |
++-----------+-----------+
+            |
+            V
++-----------+-----------+
+|      Loop             |
+|  Check Priority       |
+|  Check Light Status   |
++-----------+-----------+
+            |
+            V
++-----------+-----------+
+|  Priority 1 & Current |
+|  Light: Green         |
+|  - Delay (6s)         |
+|  - Change to Yellow   |
+|  - Set to Yellow      |
+|  - Delay (3s)         |
+|  - Change to Red      |
+|  - Set to Red         |
++-----------+-----------+
+            |
+            V
++-----------+-----------+
+|  Priority 2 & Current |
+|  Light: Red           |
+|  - Delay (2s)         |
+|  - Change to Yellow   |
+|  - Set to Yellow      |
++-----------+-----------+

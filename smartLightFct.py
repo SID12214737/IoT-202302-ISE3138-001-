@@ -26,11 +26,11 @@ class TrafficLightController:
         GPIO.output(self.YELLOW_PIN, GPIO.LOW)
         GPIO.output(self.GREEN_PIN, GPIO.LOW)
         
-        if color == 0:  # Green
+        if color == 1:  # Green
             GPIO.output(self.GREEN_PIN, GPIO.HIGH)
-        elif color == 1:  # Yellow
+        elif color == 2:  # Yellow
             GPIO.output(self.YELLOW_PIN, GPIO.HIGH)
-        elif color == 2:  # Red
+        elif color == 3:  # Red
             GPIO.output(self.RED_PIN, GPIO.HIGH)
         else:
             print("Invalid color parameter")
@@ -47,20 +47,25 @@ class TrafficLightController:
         priority = self.priority
         current_light = self.current_light
 
-        if priority == 1 and current_light == 0:
-            time.sleep(6)
-            self.change_light(1)
-            self.current_light = 1
-            time.sleep(3)
-            self.change_light(2)
-            self.current_light = 2
-            time.sleep(3)
-            self.change_light(2)  # Assuming 2 for red
-            self.current_light = 2
-        elif priority == 2 and current_light == 2:
+        if priority == 1:
+            # Priority for cars: Give more time for Green light
+            self.change_light(0)  # Green
+            time.sleep(8)
+            self.change_light(2)  # Red
+        elif priority == 2:
+            # Priority for people: Give more time for Red light
+            self.change_light(1)  # Yellow
+            time.sleep(4)
+            self.change_light(0)  # Green
             time.sleep(2)
-            self.change_light(1)
-            self.current_light = 1
-
+            self.change_light(2)  # Red
+        else:
+            # No priority: Normal operation
+            self.change_light(0)  # Green
+            time.sleep(4)
+            self.change_light(1)  # Yellow
+            time.sleep(2)
+            self.change_light(2)  # Red
+            
     def change_priority_point(self, new_priority):
         self.average_priority_point = new_priority
