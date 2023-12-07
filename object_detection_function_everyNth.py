@@ -40,7 +40,7 @@ def detection(que, cap_source=0, out_des="output.mp4"):
         total_frames += 1
         
         # Process frame only if it's the fifth frame
-        if frame_count % 5 == 0:
+        if frame_count % 1 == 0:
             # Reset the counter
             frame_count = 0
             
@@ -69,6 +69,7 @@ def detection(que, cap_source=0, out_des="output.mp4"):
                         label = class_names[class_id]
                         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
                         cv2.putText(frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
             
             que.put(total_vehicles)  # Put data in the queue
             
