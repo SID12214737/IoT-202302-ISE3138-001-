@@ -1,0 +1,18 @@
+-----------------       -----------------       -----------------       ----------------- 
+| User (Sender) |       | Listener      |       | Detection     |       | Traffic Light |
+|               |       |               |       |               |       | Controller    |
+|   send "ping" |-----> |    receives   |       |               |       |               |
+|               |       |     "ping"    |       |               |       |               |
+-----------------       |               |       |               |       |               |
+                        |   gets vehicle|       |   receives    |       |               |
+                        |     count     |       |   vehicle     |       |               |
+                        |               |       |   count       |       |               |
+                        |   sends count |       |               |       |               |
+                        |    to que     |       |   processes   |       |               |
+-----------------       -----------------       |   count and   |       |               |
+| User(Receiver)|                               |   adjusts     |       |               |
+|               |                               |   traffic     |       |               |
+|   receives    |-------------------------------|   light       |       |               |
+|   response    |                               |   timings     |       |               |
+|               |                               |               |       |               |
+-----------------                               -----------------       -----------------

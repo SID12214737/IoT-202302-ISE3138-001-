@@ -1,6 +1,4 @@
 import RPi.GPIO as GPIO
-
-
 # from object_detection_function import detection
 from object_detection_function_everyNth import detection
 # import listener
@@ -60,3 +58,18 @@ if __name__ == "__main__":
     
     # Clean up GPIO before exiting
     GPIO.cleanup()
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+#
+#  create -> TrafficLightController (controller)                
+#  create -> FixedSizeStack (data queue)                        
+#  get source
+#
+#  # # # Multriproccessing # # # # #
+#  process -> Detection(*ergs=data_queue) | pushes count to queue
+#
+#  process -> Listener(*ergs=data_queue)  | gets count from queue
+#
+#  process -> Simulate_trafficlight(*ergs=controller) 
+#
+#  cleanup

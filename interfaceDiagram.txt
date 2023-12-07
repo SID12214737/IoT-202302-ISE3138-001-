@@ -1,0 +1,20 @@
+-----------------       -----------------       ----------------- 
+| User (Sender) |       | Listener      |       | Detection     |
+|               |       |               |       |               |
+|   send "ping" |-----> |    receives   |       |   receives    |
+|               |       |     "ping"    |       |               |
+-----------------       |   processes   |       |   processes   |
+                        |     request   |       |     frame     |
+                        |               |       |               |
+                        |   gets vehicle|       |   detects &   |
+                        |     count     |       |   counts      |
+                        |               |       |               |
+                        |   sends count |       |   sends count |
+                        |    response   |       |    to que     |
+-----------------       -----------------       -----------------
+| User (Receiver)|                                 ^
+|               |                                 |
+|   receives    |                                 |
+|   response    |---------------------------------|
+|               |
+-----------------

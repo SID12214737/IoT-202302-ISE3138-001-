@@ -17,9 +17,9 @@ class TrafficLightController:
         GPIO.setup(self.GREEN_PIN, GPIO.OUT)
 
         # Shared variables
-        self.current_light = Value('i', 0)
-        self.priority = Value('i', 0)
-        self.average_priority_point = Value('f', 5.0)  # Using 'f' for float
+        self.current_light = 0
+        self.priority = 0
+        self.average_priority_point = 5.0  
 
     def change_light(self, color):
         GPIO.output(self.RED_PIN, GPIO.LOW)
@@ -36,31 +36,31 @@ class TrafficLightController:
             print("Invalid color parameter")
 
     def get_new_color(self, nb_car):
-        if nb_car and self.average_priority_point.value:
-            if nb_car / self.average_priority_point.value >= 1.75:
+        if nb_car and self.average_priority_point:
+            if nb_car / self.average_priority_point >= 1.75:
                 return 2  # Priority to cars (red)
-            if nb_car / self.average_priority_point.value <= 0.25:
+            if nb_car / self.average_priority_point <= 0.25:
                 return 1  # Priority to people (yellow)
         return 0  # No priority (green)
 
     def send_light_color_instruction(self):
-        priority = self.priority.value
-        current_light = self.current_light.value
+        priority = self.priority
+        current_light = self.current_light
 
         if priority == 1 and current_light == 0:
             time.sleep(6)
             self.change_light(1)
-            self.current_light.value = 1
+            self.current_light = 1
             time.sleep(3)
             self.change_light(2)
-            self.current_light.value = 2
+            self.current_light = 2
             time.sleep(3)
             self.change_light(2)  # Assuming 2 for red
-            self.current_light.value = 2
+            self.current_light = 2
         elif priority == 2 and current_light == 2:
             time.sleep(2)
             self.change_light(1)
-            self.current_light.value = 1
+            self.current_light = 1
 
     def change_priority_point(self, new_priority):
-        self.average_priority_point.value = new_priority
+        self.average_priority_point = new_priority

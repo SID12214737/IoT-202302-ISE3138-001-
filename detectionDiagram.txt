@@ -1,0 +1,22 @@
+-----------------       ----------------- 
+| Video Capture |       | Detection     |
+|    Module     |       |               |
+|               |       |               |
+|   reads video |-----> |   receives    |
+|     frames    |       |   frame       |
+-----------------       |               |
+                        |   processes   |
+                        |   frame for   |
+                        |   detection   |
+                        |               |
+                        |   identifies  |
+                        |   vehicles    |
+                        |               |
+                        |   sends count |
+                        |   to que      |
+-----------------       -----------------
+|   Video       |               ^
+|   Processing  |               |
+|    Results    |---------------|
+|               |
+-----------------
