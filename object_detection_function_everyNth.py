@@ -40,7 +40,7 @@ def detection(que, cap_source=0, out_des="output.mp4"):
         total_frames += 1
         
         # Process frame only if it's the fifth frame
-        if frame_count % 1 == 0:
+        if frame_count % 5 == 0:
             # Reset the counter
             frame_count = 0
             
@@ -67,6 +67,9 @@ def detection(que, cap_source=0, out_des="output.mp4"):
                         total_vehicles += 1
                         # Add labels (class names) to the bounding boxes
                         label = class_names[class_id]
+                        confidence_text = f'{label}: {confidence:.2f}'  # Text to display sureness
+                        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                        cv2.putText(frame, confidence_text, (x, y - 25), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)  # Display sureness above box
                         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
                         cv2.putText(frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
