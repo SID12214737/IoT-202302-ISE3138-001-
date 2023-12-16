@@ -73,8 +73,15 @@ def calculate_precision(detections1, detections2, iou_threshold=0.5):
 
     precision = true_positives / max((true_positives + false_positives), 1)
     return precision
+
 def main():
     model3 = YOLO("yolov3-tinyu.pt")
     model8 = YOLO("yolov8s.pt")
     results3 = get_results(model3)
     results8 = get_results(model8)
+    precision = calculate_precision(results3, results8)
+    print(f"Precision: {precision:.4f}")
+
+if __name__ == "__main__":
+    main()
+    
