@@ -15,7 +15,7 @@ class_names = {
 }
 
 # Frame
-video_cap = cv2.VideoCapture("night2.jpg")
+video_cap = cv2.VideoCapture("snow1.jpg")
 
 ret, frame = video_cap.read()
 
