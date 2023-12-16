@@ -15,7 +15,7 @@ class_names = {
 }
 
 # Frame
-video_cap = cv2.VideoCapture("1.mp4")
+video_cap = cv2.VideoCapture("night2.jpg")
 
 ret, frame = video_cap.read()
 
@@ -57,22 +57,24 @@ def calculate_precision(detections1, detections2, iou_threshold=0.5):
     true_positives = 0
     false_positives = 0
 
-    # Loop through detections from model1 and check for matches in model2
-    for detection1 in detections1:
-        matched = False
-        for detection2 in detections2:
+    matched_indices = set()  # Track matched detections to avoid multiple matches
+
+    # Loop through detections from model1 and find matches in model2
+    for i, detection1 in enumerate(detections1):
+        for j, detection2 in enumerate(detections2):
+            if j in matched_indices:
+                continue  # Skip detections already matched
+
             iou = calculate_iou(detection1['box'], detection2['box'])
             if iou >= iou_threshold and detection1['class'] == detection2['class']:
-                matched = True
+                true_positives += 1
+                matched_indices.add(j)  # Mark detection from model2 as matched
                 break
-        
-        if matched:
-            true_positives += 1
-        else:
-            false_positives += 1
 
+    false_positives = len(detections2) - len(matched_indices)
     precision = true_positives / max((true_positives + false_positives), 1)
     return precision
+
 
 def main():
     model3 = YOLO("yolov3-tinyu.pt")
@@ -84,4 +86,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
